@@ -41,23 +41,10 @@ const Coincard = ({name,img,url,price,id}) => {
         
         />
     
-      <CardFooter
-        justify='space-between'
-        flexWrap='wrap'
-        sx={{
-            '& > button': {
-                minW: '136px',
-            },
-        }}
-        >
-        <Button flex='1' variant='ghost' leftIcon={<BiLike/>}>
-          Like
-        </Button>
-        <a href={url} target={'_blank'} rel="noreferrer">
-        <Button flex='1' variant='ghost' leftIcon={<BiShare />} >
-          Register
-        </Button>
-        </a>
+      <CardFooter>
+        <b>
+     Click For Stats
+        </b>
       </CardFooter>
     </Card>
           </Link>

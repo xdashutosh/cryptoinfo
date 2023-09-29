@@ -4,9 +4,10 @@ import { server } from '../index'
 import {CardBody,Stack,Card,Heading,CardFooter,CardHeader,Text,Button, Flex,Avatar,Box,IconButton,Image  } from '@chakra-ui/react'
 import {BiLike,BiShare} from 'react-icons/bi'
 import Errorcomp from './Errorcomp'
+import { useToast } from '@chakra-ui/react'
 
 const Exchange = () => {
-
+  const toast = useToast();
   const [exchanges,setexchanges] = useState([]);
   const [error,seterror] = useState(false);
 
@@ -31,7 +32,7 @@ if(error) return <Errorcomp/>;
 
 {
   exchanges.map((i)=>(
-   <ExchangeCard name={i.name} img={i.image} url ={i.url} year={i.year_established} country ={i.country} />
+   <ExchangeCard name={i.name} img={i.image} url ={i.url} year={i.year_established} country ={i.country} toast={toast} />
   ))
 }
 
@@ -40,7 +41,7 @@ if(error) return <Errorcomp/>;
   )
 }
 
-const ExchangeCard = ({name,img,url,year,country})=>(
+const ExchangeCard = ({name,img,url,year,country,toast})=>(
   <Card maxW='sm'  css={
     
     {
@@ -51,7 +52,7 @@ const ExchangeCard = ({name,img,url,year,country})=>(
   <CardHeader>
     <Flex spacing='4'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name='Segun Adebayo' src={img} />
+        <Avatar name={name} src={img} />
         <Box>
           <Heading size='sm'>{name}</Heading>
           <Text>Year Established : {year}</Text>
@@ -91,7 +92,16 @@ const ExchangeCard = ({name,img,url,year,country})=>(
       },
     }}
   >
-    <Button flex='1' variant='ghost' leftIcon={<BiLike/>}>
+    <Button flex='1' variant='ghost' leftIcon={<BiLike/>}    onClick={() =>
+        toast({
+          title: "Liked!",
+          description: "Thank you for your response!",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+          
+        })
+      }>
       Like
     </Button>
     <a href={url} target={'_blank'} rel="noreferrer">
