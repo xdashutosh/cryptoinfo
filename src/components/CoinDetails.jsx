@@ -3,7 +3,7 @@ import { useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { server } from '..//index';
 import axios from 'axios';
-import {Text,Image , HStack,RadioGroup,Radio, Badge } from '@chakra-ui/react'
+import {Text,Image , HStack,RadioGroup,Radio, Badge, Stack } from '@chakra-ui/react'
 import {BiRupee,BiDollar,BiEuro} from 'react-icons/bi';
 import {
   Stat,
@@ -43,7 +43,7 @@ const params= useParams();
  
 
   return (
-  <VStack w={'full'} border={'2px solid'} h={'100%'} p={'16'}>
+  <VStack w={'full'} border={'2px solid'} h={'100%'} p={'8'}>
        <RadioGroup  w={'-webkit-fit-content'} mt={'2'} ml={'4'} value={currency}>
   <HStack spacing={'4'}>
     <Radio value='inr' onClick={()=>setcurrency('inr')}><BiRupee/></Radio>
@@ -51,8 +51,8 @@ const params= useParams();
     <Radio value='usd'onClick={()=>setcurrency('usd')}><BiEuro/></Radio>
   </HStack>
 </RadioGroup>
-<Text fontSize={'small'} mt={'2'}>last updated on {coin.last_updated}</Text>
-<HStack  spacing={'8'} mt={'4'}>
+<Text fontSize={'small'} mt={'2'}   >last updated on {coin.last_updated}</Text>
+<HStack  spacing={['0','8']} mt={'4'} w={['80vw','-webkit-fit-content']} >
 <Image src={coin.image?.large} w={'20'} h={'20'}/>
 <StatGroup>
   <Stat>
@@ -69,6 +69,10 @@ const params= useParams();
 <Badge bg={'blackAlpha.900'} color={'white'} h={'8'} w={'-webkit-fit-content'} fontSize={'larger'} m={'4'}>#{coin.market_cap_rank}</Badge>
 </StatGroup>
 </HStack>
+
+<Stack >
+
+</Stack>
   </VStack>
   )
 }
