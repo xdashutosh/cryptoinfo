@@ -66,7 +66,7 @@ const params= useParams();
       {coin.market_data?.price_change_percentage_24h}%
     </StatHelpText>
   </Stat>
-<Badge bg={'blackAlpha.900'} color={'white'} h={'8'} w={'10'} fontSize={'larger'} m={'4'}>#{coin.market_cap_rank}</Badge>
+<Badge bg={'blackAlpha.900'} color={'white'} h={'8'} w={'-webkit-fit-content'} fontSize={'larger'} m={'4'}>#{coin.market_cap_rank}</Badge>
 </StatGroup>
 </HStack>
   </VStack>
