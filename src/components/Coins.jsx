@@ -33,9 +33,9 @@ const Coins = () => {
 if(error) return <Errorcomp/>;
   return ( <>
 
-<RadioGroup  w={'-webkit-fit-content'} mt={'2'} ml={'4'} value={currency}>
+<RadioGroup  w={'-webkit-fit-content'} mt={'2'} ml={'4'} value={currency} colorScheme='green'>
   <HStack spacing={'4'}>
-    <Radio value='inr' onClick={()=>setcurrency('inr')}><BiRupee/></Radio>
+    <Radio value='inr' onClick={()=>setcurrency('inr')} ><BiRupee/></Radio>
     <Radio value='eur' onClick={()=>setcurrency('eur')}><BiDollar/></Radio>
     <Radio value='usd'onClick={()=>setcurrency('usd')}><BiEuro/></Radio>
   </HStack>
@@ -49,7 +49,7 @@ if(error) return <Errorcomp/>;
             }
             
             ::-webkit-scrollbar-thumb {
-              background: #4a90e2; // Color of the scrollbar thumb
+              background: green; // Color of the scrollbar thumb
               border-radius: 4px; // Adjust the thumb's border radius
             }
           `}

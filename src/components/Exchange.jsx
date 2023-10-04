@@ -44,7 +44,7 @@ if(error) return <Errorcomp/>;
 const ExchangeCard = ({name,img,url,year,country,toast})=>(
   <Card maxW='sm'  css={
     
-    {
+    { 
       "&":{transform:"scale(.9)",},
       "&:hover":{transform:"scale(1)",}
   }

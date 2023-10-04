@@ -3,7 +3,7 @@ import { useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { server } from '..//index';
 import axios from 'axios';
-import {Text,Image , HStack,RadioGroup,Radio, Badge, Stack } from '@chakra-ui/react'
+import {Text,Image , HStack,RadioGroup,Radio, Badge, Stack, Progress, Heading } from '@chakra-ui/react'
 import {BiRupee,BiDollar,BiEuro} from 'react-icons/bi';
 import {
   Stat,
@@ -18,7 +18,6 @@ import { VStack } from '@chakra-ui/react';
 const CoinDetails = () => {
   const [coin,setcoin] = useState([]);
   const [error,seterror] = useState(false);
-  const [page,setpage] =useState(1);
   const [currency,setcurrency] =useState('inr');
 
 const params= useParams();
@@ -44,7 +43,7 @@ const params= useParams();
 
   return (
   <VStack w={'full'} border={'2px solid'} h={'100%'} p={'8'}>
-       <RadioGroup  w={'-webkit-fit-content'} mt={'2'} ml={'4'} value={currency}>
+       <RadioGroup  w={'-webkit-fit-content'} mt={'2'} ml={'4'} value={currency} colorScheme='green'>
   <HStack spacing={'4'}>
     <Radio value='inr' onClick={()=>setcurrency('inr')}><BiRupee/></Radio>
     <Radio value='eur' onClick={()=>setcurrency('eur')}><BiDollar/></Radio>
@@ -52,7 +51,7 @@ const params= useParams();
   </HStack>
 </RadioGroup>
 <Text fontSize={'small'} mt={'2'}   >last updated on {coin.last_updated}</Text>
-<HStack  spacing={['0','8']} mt={'4'} w={['80vw','-webkit-fit-content']} >
+<HStack  spacing={['2','8']} mt={'4'} w={['80vw','-webkit-fit-content']} >
 <Image src={coin.image?.large} w={'20'} h={'20'}/>
 <StatGroup>
   <Stat>
@@ -70,11 +69,34 @@ const params= useParams();
 </StatGroup>
 </HStack>
 
-<Stack >
 
-</Stack>
+<VStack w={'full'}>
+<Text>Today's Growth</Text>
+<Progress colorScheme='green' size='md' value={20}  w={'full'}/>
+<HStack w={'full'} justifyContent={'space-between'}>
+<Badge children={coin.market_data?.low_24h[currency]} fontSize={['.8em','1.5em']} colorScheme='green' />
+<Badge children={'24H'} fontSize={['1em','2em']} bg={'none'} />
+<Badge children={coin.market_data?.high_24h[currency]}  fontSize={['.8em','1.5em']} colorScheme='green' />
+</HStack>
+</VStack>
+
+<HStack w={'full'} spacing={'8'} mt={'16'} justifyContent={'center'}>
+  <VStack spacing={'8'}>
+   <Heading fontSize={['md','xl']} fontFamily={'Bebas Neue'} letterSpacing={'widest '}>All Time High price:</Heading>
+   <Heading fontSize={['md','xl']} fontFamily={'Bebas Neue'} letterSpacing={'widest '}>All Time low price:</Heading>
+   <Heading fontSize={['md','xl']} fontFamily={'Bebas Neue'} letterSpacing={'widest '}>market capacity:</Heading>
+  </VStack>
+  <VStack spacing={'8'}>
+   <Heading fontSize={['md','xl']}>{coin.market_data?.ath[currency]}</Heading>
+   <Heading fontSize={['md','xl']}>{coin.market_data?.atl[currency]}</Heading>
+   <Heading fontSize={['md','xl']}>{coin.market_data.market_cap[currency]}</Heading>
+  </VStack>
+</HStack>
+
   </VStack>
   )
 }
+
+
 
 export default CoinDetails
