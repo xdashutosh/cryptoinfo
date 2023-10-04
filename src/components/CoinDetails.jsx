@@ -72,7 +72,7 @@ const params= useParams();
 
 <VStack w={'full'}>
 <Text>Today's Growth</Text>
-<Progress colorScheme='green' size='md' value={20}  w={'full'}/>
+<Progress colorScheme='green' size='md' value={(coin.market_data?.high_24h[currency])*10/(coin.market_data?.low_24h[currency])}  w={'full'}/>
 <HStack w={'full'} justifyContent={'space-between'}>
 <Badge children={coin.market_data?.low_24h[currency]} fontSize={['.8em','1.5em']} colorScheme='green' />
 <Badge children={'24H'} fontSize={['1em','2em']} bg={'none'} />
@@ -89,7 +89,7 @@ const params= useParams();
   <VStack spacing={'8'}>
    <Heading fontSize={['md','xl']}>{coin.market_data?.ath[currency]}</Heading>
    <Heading fontSize={['md','xl']}>{coin.market_data?.atl[currency]}</Heading>
-   <Heading fontSize={['md','xl']}>{coin.market_data.market_cap[currency]}</Heading>
+   <Heading fontSize={['md','xl']}>{coin.market_data?.market_cap[currency]}</Heading>
   </VStack>
 </HStack>
 
