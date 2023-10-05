@@ -3,7 +3,7 @@ import { useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { server } from '..//index';
 import axios from 'axios';
-import {Text,Image , HStack,RadioGroup,Radio, Badge, Stack, Progress, Heading } from '@chakra-ui/react'
+import {Text,Image , HStack,RadioGroup,Radio, Badge, Progress, Heading, Input } from '@chakra-ui/react'
 import {BiRupee,BiDollar,BiEuro} from 'react-icons/bi';
 import {
   Stat,
@@ -15,20 +15,24 @@ import {
 } from '@chakra-ui/react'
 
 import { VStack } from '@chakra-ui/react';
+import Chartarea from './Chartarea';
 const CoinDetails = () => {
   const [coin,setcoin] = useState([]);
   const [error,seterror] = useState(false);
   const [currency,setcurrency] =useState('inr');
+
 
 const params= useParams();
   useEffect( () => {  
     const fetchcoin = async () => {  
       try {
         const {data} = await axios.get(`${server}/coins/${params.id}`);  
-        console.log(data);
+    
         console.log(params.id);
+        console.log(data) ;
         setcoin(data);
-     console.log(coin);
+      
+
       
       } catch (error) {
         console.log(error);
@@ -72,7 +76,7 @@ const params= useParams();
 
 <VStack w={'full'}>
 <Text>Today's Growth</Text>
-<Progress colorScheme='green' size='md' value={(coin.market_data?.high_24h[currency])*10/(coin.market_data?.low_24h[currency])}  w={'full'}/>
+<Progress colorScheme='green' size='md' value={coin.market_data?.price_change_percentage_24h *10}  w={'full'}/>
 <HStack w={'full'} justifyContent={'space-between'}>
 <Badge children={coin.market_data?.low_24h[currency]} fontSize={['.8em','1.5em']} colorScheme='green' />
 <Badge children={'24H'} fontSize={['1em','2em']} bg={'none'} />
@@ -80,7 +84,7 @@ const params= useParams();
 </HStack>
 </VStack>
 
-<HStack w={'full'} spacing={'8'} mt={'16'} justifyContent={'center'}>
+<HStack w={'full'} spacing={'8'} mt={'16'} justifyContent={'center'} mb={'4'}>
   <VStack spacing={'8'}>
    <Heading fontSize={['md','xl']} fontFamily={'Bebas Neue'} letterSpacing={'widest '}>All Time High price:</Heading>
    <Heading fontSize={['md','xl']} fontFamily={'Bebas Neue'} letterSpacing={'widest '}>All Time low price:</Heading>
@@ -92,7 +96,8 @@ const params= useParams();
    <Heading fontSize={['md','xl']}>{coin.market_data?.market_cap[currency]}</Heading>
   </VStack>
 </HStack>
-
+{/* <Input type='number' value={setdays(10)}/> */}
+<Chartarea arr={coin} currency={currency} />
   </VStack>
   )
 }
