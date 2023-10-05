@@ -1,7 +1,7 @@
 import { Box, Stack, VStack,Text, Heading, HStack, Input, Button ,Image} from '@chakra-ui/react'
 import {BiLogoFacebook,BiLogoInstagram,BiLogoTwitter,BiLogoLinkedin,BiLogoWhatsapp,BiLogoReddit,BiSolidSend} from 'react-icons/bi';
 import React from 'react'
-import mainimg from '../assests/logo192.png'
+import mainimg from '../assests/btc.png'
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
 
 <Box w={'full'} h={'80vh'} bg={'blackAlpha.800'}  >
   <Stack alignItems={'center'} justifyContent={'center'} h={'full'} >
-<Image src={mainimg} w={['60vw','25vw']}  animation h={['60vw','25vw']} borderRadius={'full'}  style={{
+<Image src={mainimg} w={'full'}  animation h={'full'} objectFit={'contain'}    style={{
   animation: "updown 4s infinite , glow 1s infinite alternate",
 
 }}/>
@@ -25,28 +25,20 @@ const Home = () => {
       
     }
   }
-  @keyframes glow {
-    0% {
-      box-shadow:0 0 5px rgba(255,255,255,0.7)
-    }
-    100%{
-      box-shadow:0 0 20px rgba(255,255,255,0.9)
-      
-      
-    }
+
   }
 
   `
   }
 </style>
-<Heading textColor={'white'} letterSpacing={'wider'}>Crypto Info</Heading>
+<Heading textColor={'white'} letterSpacing={'wider'} mt={'-20'}>Crypto Info</Heading>
   </Stack>
 </Box>
 <Stack w={'full'}  alignItems={'stretch'} justifyContent={'space-evenly'} spacing={['8','16']} direction={['column','row']}>
 <VStack>
   <VStack>
     <HStack  spacing={'4'}>
-      <Heading>CRYPTO.info</Heading>
+      <Heading>ℂℝ𝕐ℙ𝕋𝕆.𝕚𝕟𝕗𝕠</Heading>
   <Text fontSize={'l'} fontWeight={'bold'} letterSpacing={'wider'}>Social Links</Text>
     </HStack>
   <HStack  spacing={'4'}>

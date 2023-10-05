@@ -1,8 +1,8 @@
 import React from 'react'
-import {Button, HStack} from '@chakra-ui/react';
+import {Button, HStack, Image, Text} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { BiAtom } from 'react-icons/bi';
-
+import mainimg from '../assests/btc.png'
 const Header = () => {
   return (
  <HStack p={'4'}   shadow={'base'} bg={'blackAlpha.900'} alignItems={'stretch'} >
@@ -17,8 +17,8 @@ const Header = () => {
   <Link to="/coins">Coins</Link>
 </Button>
 </HStack>
-<HStack mr={'8'}>
-  <BiAtom color='white' size={'35'}/>
+<HStack mr={['2','8']}>
+ <Text textColor={'white'}>ℂℝ𝕐ℙ𝕋𝕆.𝕚𝕟𝕗𝕠</Text>
 </HStack>
   
  </HStack>
