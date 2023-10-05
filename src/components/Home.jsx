@@ -51,13 +51,13 @@ const Home = () => {
     </HStack>
   <HStack  spacing={'4'}>
  <a href='https://facebook.com' >
-   <BiLogoFacebook color='green'/>
+   <BiLogoFacebook color='green' size={'25'}/>
   </a>
-  <BiLogoInstagram color='green'/>
-  <BiLogoLinkedin color='green'/>
-  <BiLogoReddit color='green'/>
-  <BiLogoWhatsapp color='green'/>
-  <BiLogoTwitter color='green'/>
+  <BiLogoInstagram color='green' size={'25'}/>
+  <BiLogoLinkedin color='green' size={'25'}/>
+  <BiLogoReddit color='green' size={'25'}/>
+  <BiLogoWhatsapp color='green' size={'25'}/>
+  <BiLogoTwitter color='green' size={'25'}/>
   </HStack>
   </VStack>
 </VStack>
