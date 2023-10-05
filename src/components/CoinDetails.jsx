@@ -46,7 +46,7 @@ const params= useParams();
  
 
   return (
-  <VStack w={'full'} border={'2px solid'} h={'100%'} p={'8'}>
+  <VStack w={'full'}  h={'100%'} p={'8'}>
        <RadioGroup  w={'-webkit-fit-content'} mt={'2'} ml={'4'} value={currency} colorScheme='green'>
   <HStack spacing={'4'}>
     <Radio value='inr' onClick={()=>setcurrency('inr')}><BiRupee/></Radio>
